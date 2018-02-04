@@ -6,6 +6,7 @@ import (
 
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/pixelgl"
+	"github.com/peterbooker/factorigo/assets"
 	"github.com/peterbooker/factorigo/config"
 	"github.com/peterbooker/factorigo/manager"
 )
@@ -24,18 +25,24 @@ func run() {
 
 	// Setup Global Config
 	config.Setup(gameDir)
+	assets.Setup(gameDir)
 
 	// Get Primary Monitor
 	monitor := pixelgl.PrimaryMonitor()
 	w, h := monitor.Size()
 
 	cfg := pixelgl.WindowConfig{
-		Title:  "Factorigo",
-		Bounds: pixel.R(0, 0, w, h),
-		//Monitor:     monitor,
+		Title:       "Factorigo",
+		Bounds:      pixel.R(0, 0, w, h),
 		Resizable:   true,
 		Undecorated: false,
 		VSync:       false,
+	}
+
+	fullscreen := false
+
+	if fullscreen {
+		cfg.Monitor = monitor
 	}
 
 	win, err := pixelgl.NewWindow(cfg)
