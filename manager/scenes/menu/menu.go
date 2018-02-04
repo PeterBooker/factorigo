@@ -7,6 +7,7 @@ import (
 	"github.com/faiface/pixel"
 	"github.com/faiface/pixel/imdraw"
 	"github.com/faiface/pixel/pixelgl"
+	"github.com/peterbooker/factorigo/assets"
 	"github.com/peterbooker/factorigo/config"
 	"github.com/peterbooker/factorigo/text"
 )
@@ -18,9 +19,11 @@ const (
 
 // Menu ...
 type Menu struct {
-	Title   string
-	color   color.RGBA
-	buttons []*Button
+	Title      string
+	logo       *pixel.Sprite
+	background *pixel.Sprite
+	color      color.RGBA
+	buttons    []*Button
 }
 
 // Button ...
@@ -39,6 +42,18 @@ func New() *Menu {
 
 // Setup ...
 func (s *Menu) Setup(win *pixelgl.Window) {
+
+	bg, err := assets.LoadPicture(assets.Background)
+	if err != nil {
+		panic(err)
+	}
+	s.background = pixel.NewSprite(bg, bg.Bounds())
+
+	logo, err := assets.LoadPicture(assets.BackgroundLogo)
+	if err != nil {
+		panic(err)
+	}
+	s.logo = pixel.NewSprite(logo, logo.Bounds())
 
 	center := win.Bounds().Center()
 	pos := center.Sub(pixel.V(bWidth/2, 0))
@@ -66,6 +81,9 @@ func (s *Menu) Setup(win *pixelgl.Window) {
 
 // Render ...
 func (s *Menu) Render(win *pixelgl.Window) string {
+
+	s.background.Draw(win, pixel.IM.Moved(win.Bounds().Center()))
+	s.logo.Draw(win, pixel.IM.Moved(win.Bounds().Center().Add(pixel.V(0, 300))))
 
 	// TODO: Position is all wrong
 	// Currently works for 1920x1080, but falls apart as the resolution changes.
