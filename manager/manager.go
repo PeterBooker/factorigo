@@ -9,10 +9,8 @@ import (
 )
 
 var (
-	start     = time.Now()
-	sceneList map[string]scenes.Scene
-	scene     string
-	i         int
+	sceneList    map[string]scenes.Scene
+	currentScene string
 )
 
 func init() {
@@ -22,7 +20,7 @@ func init() {
 	sceneList["menu"] = scenes.GetMenuScene()
 	sceneList["game"] = scenes.GetGameScene()
 
-	scene = "menu"
+	currentScene = "menu"
 
 }
 
@@ -36,9 +34,7 @@ func Start(win *pixelgl.Window) {
 
 func Scene(win *pixelgl.Window) {
 
-	scene = sceneList[scene].Render(win)
-
-	i++
+	currentScene = sceneList[currentScene].Render(win)
 
 }
 
