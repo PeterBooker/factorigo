@@ -17,7 +17,7 @@ func main() {
 
 func run() {
 
-	if len(os.Args) == 0 {
+	if len(os.Args) < 1 {
 		log.Fatalln("Factorigo requires the install path of Factorio.")
 	}
 

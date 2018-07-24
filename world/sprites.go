@@ -52,19 +52,19 @@ func SetupSprites() error {
 	}
 	sprites.grassSprite = &grassSS
 
-	grassSideSS, err := assets.LoadPicture(assets.GrassSide)
+	grassSideSS, err := assets.LoadPicture(assets.Grass)
 	if err != nil {
 		return err
 	}
 	sprites.grassSideSprite = &grassSideSS
 
-	grassInnerSS, err := assets.LoadPicture(assets.GrassInnerCorner)
+	grassInnerSS, err := assets.LoadPicture(assets.Grass)
 	if err != nil {
 		return err
 	}
 	sprites.grassInnerSprite = &grassInnerSS
 
-	grassOuterSS, err := assets.LoadPicture(assets.GrassOuterCorner)
+	grassOuterSS, err := assets.LoadPicture(assets.Grass)
 	if err != nil {
 		return err
 	}
@@ -77,19 +77,19 @@ func SetupSprites() error {
 	}
 	sprites.dirtSprite = &dirtSS
 
-	dirtSideSS, err := assets.LoadPicture(assets.DirtSide)
+	dirtSideSS, err := assets.LoadPicture(assets.Dirt)
 	if err != nil {
 		return err
 	}
 	sprites.dirtSideSprite = &dirtSideSS
 
-	dirtInnerSS, err := assets.LoadPicture(assets.DirtInnerCorner)
+	dirtInnerSS, err := assets.LoadPicture(assets.Dirt)
 	if err != nil {
 		return err
 	}
 	sprites.dirtInnerSprite = &dirtInnerSS
 
-	dirtOuterSS, err := assets.LoadPicture(assets.DirtOuterCorner)
+	dirtOuterSS, err := assets.LoadPicture(assets.Dirt)
 	if err != nil {
 		return err
 	}
@@ -102,19 +102,19 @@ func SetupSprites() error {
 	}
 	sprites.sandSprite = &sandSS
 
-	sandSideSS, err := assets.LoadPicture(assets.SandSide)
+	sandSideSS, err := assets.LoadPicture(assets.Sand)
 	if err != nil {
 		return err
 	}
 	sprites.sandSideSprite = &sandSideSS
 
-	sandInnerSS, err := assets.LoadPicture(assets.SandInnerCorner)
+	sandInnerSS, err := assets.LoadPicture(assets.Sand)
 	if err != nil {
 		return err
 	}
 	sprites.sandInnerSprite = &sandInnerSS
 
-	sandOuterSS, err := assets.LoadPicture(assets.SandOuterCorner)
+	sandOuterSS, err := assets.LoadPicture(assets.Sand)
 	if err != nil {
 		return err
 	}

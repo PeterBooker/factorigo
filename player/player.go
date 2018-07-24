@@ -120,10 +120,10 @@ func (p *Player) idleRect() pixel.Rect {
 
 	animRate := 1.0 / 10
 
-	th := 73.00
-	tw := 53.00
+	th := 58.00
+	tw := 46.00
 
-	sh := 584.00
+	sh := 464.00
 	//sw := 1056.00
 
 	minX := 0.00 + (tw * float64(p.progress))
@@ -152,10 +152,10 @@ func (p *Player) runRect() pixel.Rect {
 
 	animRate := 1.0 / 30
 
-	th := 71.00
-	tw := 48.00
+	th := 66.00
+	tw := 44.00
 
-	sh := 568.00
+	sh := 528.00
 	//sw := 1056.00
 
 	minX := 0.00 + (tw * float64(p.progress))
@@ -226,11 +226,13 @@ func (p *Player) loadSprites() error {
 	}
 	p.sprites.basicIdle = &IdleSS
 
+	/* Colour Handling Changed
 	basicIdleColor, err := assets.LoadPicture(assets.PlayerBasicIdleColor)
 	if err != nil {
 		return err
 	}
 	p.sprites.basicIdleColor = &basicIdleColor
+	*/
 
 	basicRun, err := assets.LoadPicture(assets.PlayerBasicRun)
 	if err != nil {
@@ -238,11 +240,13 @@ func (p *Player) loadSprites() error {
 	}
 	p.sprites.basicRun = &basicRun
 
+	/* Colour Handling Changed
 	basicRunColor, err := assets.LoadPicture(assets.PlayerBasicRunColor)
 	if err != nil {
 		return err
 	}
 	p.sprites.basicRunColor = &basicRunColor
+	*/
 
 	return nil
 

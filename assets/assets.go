@@ -68,25 +68,13 @@ func Setup(gameDir string) {
 	BackgroundLogo = filepath.Join(gameDir, "data", "core", "graphics", "background-image-logo.png")
 
 	// Terrain Resources
-	Grass = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "grass", "grass1.png")
-	GrassInnerCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "grass", "grass-inner-corner.png")
-	GrassOuterCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "grass", "grass-outer-corner.png")
-	GrassSide = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "grass", "grass-side.png")
+	Grass = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "hr-grass-1.png")
 
-	Dirt = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt", "dirt1.png")
-	DirtInnerCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt", "dirt-inner-corner.png")
-	DirtOuterCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt", "dirt-outer-corner.png")
-	DirtSide = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt", "dirt-side.png")
+	Dirt = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "hr-dirt-1.png")
 
-	DirtDark = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt-dark", "dirt-dark1.png")
-	DirtDarkInnerCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt-dark", "dirt-dark-inner-corner.png")
-	DirtDarkOuterCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt-dark", "dirt-dark-outer-corner.png")
-	DirtDarkSide = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "dirt-dark", "dirt-dark-side.png")
+	DirtDark = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "hr-dirt-3.png")
 
-	Sand = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "sand", "sand1.png")
-	SandInnerCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "sand", "sand-inner-corner.png")
-	SandOuterCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "sand", "sand-outer-corner.png")
-	SandSide = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "sand", "sand-side.png")
+	Sand = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "hr-sand-1.png")
 
 	Water = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "water", "water1.png")
 	WaterInnerCorner = filepath.Join(gameDir, "data", "base", "graphics", "terrain", "water", "water-inner-corner.png")
@@ -111,10 +99,10 @@ func Setup(gameDir string) {
 	Stone = filepath.Join(gameDir, "data", "base", "graphics", "entity", "stone", "stone.png")
 
 	// Player Animations
-	PlayerBasicIdle = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "player-basic-idle.png")
-	PlayerBasicIdleColor = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "player-basic-idle-color.png")
-	PlayerBasicRun = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "player-basic-run.png")
-	PlayerBasicRunColor = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "player-basic-run-color.png")
+	PlayerBasicIdle = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "level1_idle.png")
+	//PlayerBasicIdleColor = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "player-basic-idle-color.png")
+	PlayerBasicRun = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "level1_running.png")
+	//PlayerBasicRunColor = filepath.Join(gameDir, "data", "base", "graphics", "entity", "player", "player-basic-run-color.png")
 
 }
 

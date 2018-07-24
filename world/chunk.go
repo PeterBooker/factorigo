@@ -54,6 +54,74 @@ func (t *tileBatch) loadFrames() {
 
 }
 
+func (t *tileBatch) loadFullTileFrames() {
+
+	max := 8.00 * 64
+
+	for x := 0.00; x < max; x += 64 {
+		y := 512.00
+		t.frames = append(t.frames, pixel.R(x, y, x+64, y+64))
+	}
+
+}
+
+func (t *tileBatch) loadOuterTileFrames() {
+
+	tileSize := 64.00
+	width := 8.00 * 64
+	height := 4.00 * 64
+
+	xStart := 2432.00
+	xMax := xStart + width
+	yStart := 320.00
+	yMax := yStart + height
+
+	for x := xStart; x < xMax; x += tileSize {
+		for y := yStart; y < yMax; y += tileSize {
+			t.frames = append(t.frames, pixel.R(x, y, x+tileSize, y+tileSize))
+		}
+	}
+
+}
+
+func (t *tileBatch) loadInnerTileFrames() {
+
+	tileSize := 64.00
+	width := 8.00 * 64
+	height := 4.00 * 64
+
+	xStart := 3008.00
+	xMax := xStart + width
+	yStart := 320.00
+	yMax := yStart + height
+
+	for x := xStart; x < xMax; x += tileSize {
+		for y := yStart; y < yMax; y += tileSize {
+			t.frames = append(t.frames, pixel.R(x, y, x+tileSize, y+tileSize))
+		}
+	}
+
+}
+
+func (t *tileBatch) loadSideTileFrames() {
+
+	tileSize := 64.00
+	width := 8.00 * 64
+	height := 4.00 * 64
+
+	xStart := 3584.00
+	xMax := xStart + width
+	yStart := 320.00
+	yMax := yStart + height
+
+	for x := xStart; x < xMax; x += tileSize {
+		for y := yStart; y < yMax; y += tileSize {
+			t.frames = append(t.frames, pixel.R(x, y, x+tileSize, y+tileSize))
+		}
+	}
+
+}
+
 func newChunk(area pixel.Rect) *chunk {
 
 	c := &chunk{
@@ -248,7 +316,6 @@ func (c *chunk) Build() {
 }
 
 func (c *chunk) Draw(can *pixelgl.Canvas) {
-
 	can.Clear(color.RGBA{255, 255, 255, 255})
 
 	// Draw Dirt Tiles
@@ -258,19 +325,20 @@ func (c *chunk) Draw(can *pixelgl.Canvas) {
 	// Draw Water Tiles
 	drawBgTiles(c.batches.waterBatch, c.batches.waterSideBatch, c.batches.waterInnerBatch, c.batches.waterOuterBatch)
 
-	c.batches.waterBatch.batch.Draw(can)
-	c.batches.waterSideBatch.batch.Draw(can)
-	c.batches.waterInnerBatch.batch.Draw(can)
-	c.batches.waterOuterBatch.batch.Draw(can)
-	c.batches.grassBatch.batch.Draw(can)
-	c.batches.grassSideBatch.batch.Draw(can)
-	c.batches.grassInnerBatch.batch.Draw(can)
-	c.batches.grassOuterBatch.batch.Draw(can)
 	c.batches.dirtBatch.batch.Draw(can)
 	c.batches.dirtSideBatch.batch.Draw(can)
 	c.batches.dirtInnerBatch.batch.Draw(can)
 	c.batches.dirtOuterBatch.batch.Draw(can)
 
+	c.batches.grassBatch.batch.Draw(can)
+	c.batches.grassSideBatch.batch.Draw(can)
+	c.batches.grassInnerBatch.batch.Draw(can)
+	c.batches.grassOuterBatch.batch.Draw(can)
+
+	c.batches.waterBatch.batch.Draw(can)
+	c.batches.waterSideBatch.batch.Draw(can)
+	c.batches.waterInnerBatch.batch.Draw(can)
+	c.batches.waterOuterBatch.batch.Draw(can)
 }
 
 func (c *chunk) loadBatches() {
@@ -311,28 +379,28 @@ func (c *chunk) loadBatches() {
 		sprite: *c.sprites.grassSprite,
 		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.grassSprite),
 	}
-	grassBatch.loadFrames()
+	grassBatch.loadFullTileFrames()
 	c.batches.grassBatch = &grassBatch
 
 	grassSideBatch := tileBatch{
-		sprite: *c.sprites.grassSideSprite,
-		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.grassSideSprite),
+		sprite: *c.sprites.grassSprite,
+		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.grassSprite),
 	}
-	grassSideBatch.loadFrames()
+	grassSideBatch.loadSideTileFrames()
 	c.batches.grassSideBatch = &grassSideBatch
 
 	grassInnerBatch := tileBatch{
-		sprite: *c.sprites.grassInnerSprite,
-		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.grassInnerSprite),
+		sprite: *c.sprites.grassSprite,
+		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.grassSprite),
 	}
-	grassInnerBatch.loadFrames()
+	grassInnerBatch.loadInnerTileFrames()
 	c.batches.grassInnerBatch = &grassInnerBatch
 
 	grassOuterBatch := tileBatch{
-		sprite: *c.sprites.grassOuterSprite,
-		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.grassOuterSprite),
+		sprite: *c.sprites.grassSprite,
+		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.grassSprite),
 	}
-	grassOuterBatch.loadFrames()
+	grassOuterBatch.loadOuterTileFrames()
 	c.batches.grassOuterBatch = &grassOuterBatch
 
 	// Dirt Batches
@@ -340,28 +408,28 @@ func (c *chunk) loadBatches() {
 		sprite: *c.sprites.dirtSprite,
 		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.dirtSprite),
 	}
-	dirtBatch.loadFrames()
+	dirtBatch.loadFullTileFrames()
 	c.batches.dirtBatch = &dirtBatch
 
 	dirtSideBatch := tileBatch{
 		sprite: *c.sprites.dirtSideSprite,
-		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.dirtSideSprite),
+		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.dirtSprite),
 	}
-	dirtSideBatch.loadFrames()
+	dirtSideBatch.loadSideTileFrames()
 	c.batches.dirtSideBatch = &dirtSideBatch
 
 	dirtInnerBatch := tileBatch{
 		sprite: *c.sprites.dirtInnerSprite,
-		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.dirtInnerSprite),
+		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.dirtSprite),
 	}
-	dirtInnerBatch.loadFrames()
+	dirtInnerBatch.loadInnerTileFrames()
 	c.batches.dirtInnerBatch = &dirtInnerBatch
 
 	dirtOuterBatch := tileBatch{
 		sprite: *c.sprites.dirtOuterSprite,
-		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.dirtOuterSprite),
+		batch:  pixel.NewBatch(&pixel.TrianglesData{}, *c.sprites.dirtSprite),
 	}
-	dirtOuterBatch.loadFrames()
+	dirtOuterBatch.loadOuterTileFrames()
 	c.batches.dirtOuterBatch = &dirtOuterBatch
 
 }
